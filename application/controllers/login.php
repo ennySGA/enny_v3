@@ -5,7 +5,14 @@ class Login extends CI_Controller{
 		parent::__construct();
 		
 		$this->load->model('model_usuarios');
-		//$this->is_logged_in();
+		$this->is_logged_in();
+	}
+
+	public function is_logged_in(){
+		$is_logged_in=$this->session->userdata('is_logged_in');
+		if(isset($is_logged_in)&&$is_logged_in===TRUE){
+			redirect('sitio');
+		}
 	}
 
 	public function index(){
@@ -41,7 +48,7 @@ class Login extends CI_Controller{
 
 	
 
-		function nuevo_registro(){
+	function nuevo_registro(){
 		$data=array('nombre'=>'Registro');
 		$data['view']='forms/nuevo_registro';
 		$this->load->library('form_validation');
@@ -53,14 +60,14 @@ class Login extends CI_Controller{
 		$this->form_validation->set_rules('password2', 'Confirma tu contraseña', 'trim|required|matches[password]');
 		if($this->form_validation->run() != FALSE){
 			$data = array(
-			'nombre' => $this->input->post('nombre'),
-			'apellido' => $this->input->post('apellido'),
-			'sexo' => $this->input->post('sexo'),
-			'email' => $this->input->post('email'),
-			'password' => md5($this->input->post('password'))
+				'nombre' => $this->input->post('nombre'),
+				'apellido' => $this->input->post('apellido'),
+				'sexo' => $this->input->post('sexo'),
+				'email' => $this->input->post('email'),
+				'password' => md5($this->input->post('password'))
 			);
-		$this->model_usuarios->insert('usuarios',$data);
-		redirect('login', 'refresh');
+			$this->model_usuarios->insert('usuarios',$data);
+			redirect('login', 'refresh');
 		}
 	
 		$this->load->view('template/body', $data);
