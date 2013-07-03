@@ -34,27 +34,33 @@
                         <li><a class="sTrash" title="" href="#">papelera</a></li>
                     </ul>
                 </li>
-
-                <li class="btn btn-inverse"><a title="" href="#"><i class="icon icon-cog"></i> <span class="text">Configuración</span></a></li>
-                <li class="btn btn-inverse"><a title="" href="<?php echo base_url()?>index.php/sitio/logout"><i class="icon icon-share-alt"></i> <span class="text">Salir</span></a></li>
+                <li class="btn btn-inverse dropdown" id="menu-config"><a href="#" data-toggle="dropdown" data-target="#menu-config" class="dropdown-toggle"><i class="icon icon-cog"></i> <span class="text">Configuración</span><b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a class="usereEdit" title="" href="<?php echo base_url()."usuarios/update"; ?>">Edita tu perfil</a></li>
+                        <li><a class="passEdit" title="" href="<?php echo base_url()."usuarios/update_password"; ?>">Cambia tu contraseña</a></li>
+                    </ul>
+                </li>
+                <li class="btn btn-inverse"><a title="" href="<?php echo base_url()?>sitio/logout"><i class="icon icon-share-alt"></i> <span class="text">Salir</span></a></li>
             </ul>
         </div>
             
 		<div id="sidebar">
 			<a href="#" class="visible-phone"><i class="icon icon-home"></i> Inicio</a>
 			<ul>
-				<li class="active"><a href="<?php echo base_url()."index.php/programas"; ?>"><i class="icon icon-home"></i> <span>Inicio</span></a></li>
-				<li><a href="<?php echo base_url()."index.php/programas"; ?>"><i class="icon icon-th-list"></i> <span>Procedimientos ISO</span></a></li>
+				<li class="active"><a href="<?php echo base_url()."sitio"; ?>"><i class="icon icon-home"></i> <span>Inicio</span></a></li>
+				<li><a href="<?php echo base_url()."programas"; ?>"><i class="icon icon-th-list"></i> <span>Procedimientos ISO</span></a></li>
 				<li class="submenu">
 					<a href="#"><i class="icon icon-asterisk"></i> <span>Organización</span></a>
 					<ul>
-						<li><a href="invoice.html"><i class="icon icon-th"></i> <span>Organigrama</span></a></li>
-						<li><a href="chat.html" ><i class="icon icon-user"></i> <span>Integrantes</span></a></li>
+						<li><a href=""><i class="icon icon-th"></i> <span>Organigrama</span></a></li>
+						<li><a href="" ><i class="icon icon-user"></i> <span>Integrantes</span></a></li>
+						<li><a href="<?php echo base_url()."organizacion"; ?>"><i class="icon icon-list-alt"></i> <span>Información</span></a></li>
+
 					</ul>
 				</li>
-				<li><a href="<?php echo base_url()."index.php/areas"; ?>"><i class="icon icon-screenshot"></i> <span>Áreas</span></a></li>
-				<li><a href="<?php echo base_url()."index.php/tipos"; ?>"><i class="icon icon-leaf"></i> <span>Aspectos ambientales</span></a></li>
-				<li><a href="<?php echo base_url()."index.php/niveles"; ?>"><i class="icon icon-briefcase"></i> <span>Legislación ambiental</span></a></li>
+				<li><a href="<?php echo base_url()."areas"; ?>"><i class="icon icon-screenshot"></i> <span>Áreas</span></a></li>
+				<li><a href="<?php echo base_url()."tipos"; ?>"><i class="icon icon-leaf"></i> <span>Aspectos ambientales</span></a></li>
+				<li><a href="<?php echo base_url()."legislaciones"; ?>"><i class="icon icon-briefcase"></i> <span>Legislación ambiental</span></a></li>
 				<li class="submenu">
 					<a href="#"><i class="icon icon-signal"></i> <span>Resultados</span></a>
 					<ul>

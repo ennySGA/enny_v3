@@ -45,7 +45,7 @@ class Usuarios extends CI_Controller{
 				redirect('sitio');
 			}
 		}
-	$this->load->view('template/body', $data);
+		$this->load->view('template/body', $data);
 	}
 
 	function update_password(){
@@ -68,7 +68,7 @@ class Usuarios extends CI_Controller{
 			} 
 
 		}
-	$this->load->view('template/body', $data);
+		$this->load->view('template/body', $data);
 	}
 
 	 public function edit_avatar(){
@@ -119,7 +119,7 @@ class Usuarios extends CI_Controller{
 	    $data['nombre']='Datos de Organización';
 	    $data['view']='forms/update_registro';
 	    $data['usuarios']=$this->model_usuarios->get_by_id('usuarios',$id);
-	    print_r($data['usuarios']);
+	    // print_r($data['usuarios']);
 	    $this->load->view('template/body', $data);
 	}
 
