@@ -16,6 +16,6 @@ echo form_fieldset('ingresa tus datos');
 echo form_fieldset_close();
 echo form_submit('enviar', 'Entrar', 'class="btn btn-primary"');
 echo " ";
-echo anchor('login/nuevo_registro', 'Crea tu cuenta', 'class="btn btn-success"');
+echo anchor('login/insert_organizacion', 'Crea tu cuenta', 'class="btn btn-success"');
 echo form_close();
  ?>

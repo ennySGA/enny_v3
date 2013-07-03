@@ -3,7 +3,7 @@
 class Login extends CI_Controller{
 	function __construct(){
 		parent::__construct();
-
+		$this->load->model('model_organizacion');
 		$this->load->model('model_usuarios');
 		$this->is_logged_in();
 	}
@@ -46,11 +46,80 @@ class Login extends CI_Controller{
 		$this->load->view('template/body', $data);
 	}
 
-	
+		public function insert_organizacion(){
+		$data['nombre']='Datos de Organización';
+		$data['view']='administracion/organizacion/insert_organizacion';
 
-		function nuevo_registro(){
-		$data=array('nombre'=>'Registro');
-		$data['view']='forms/nuevo_registro';
+		$this->load->library('form_validation');
+		$config=array(
+				array(
+                     'field'   => 'nombre',
+                     'label'   => 'Nombre',
+                     'rules'   => 'trim|required|max_length[120]|is_unique[organizaciones.nombre]'
+                 	),
+                
+                array(
+                     'field'   => 'direccion',
+                     'label'   => 'Dirección',
+                     'rules'   => 'trim|required|max_length[120]'
+					),
+                
+                array(
+                     'field'   => 'colonia',
+                     'label'   => 'Colonia',
+                     'rules'   => 'trim|required|max_length[120]'
+					),
+                
+                array(
+                     'field'   => 'cp',
+                     'label'   => 'CP',
+                     'rules'   => 'trim|required|exact_length[5]|numeric'
+					),
+                
+                array(
+                     'field'   => 'ciudad_estado',
+                     'label'   => 'Ciudad/Estado',
+                     'rules'   => 'trim|required|max_length[120]'
+					),
+                
+                array(
+                     'field'   => 'giro',
+                     'label'   => 'Giro',
+                     'rules'   => 'trim|required|max_length[120]'
+					)
+
+			);
+		$this->form_validation->set_rules($config); 
+
+		if($this->form_validation->run()){
+			$data['success_message']="Registro realizado";
+			$nombre=$this->input->post('nombre');
+			$direccion=$this->input->post('direccion');
+			$colonia=$this->input->post('colonia');
+			$cp=$this->input->post('cp');
+			$ciudad_estado=$this->input->post('ciudad_estado');
+			$giro=$this->input->post('giro');
+			$tamano=$this->input->post('tamano');			
+			$organizacion= array(
+			'nombre'=>$nombre,
+			'direccion'=>$direccion,
+			'colonia'=>$colonia,
+			'cp'=>$cp,
+			'ciudad_estado'=>$ciudad_estado,
+			'giro'=>$giro,
+			'tamano'=>$tamano
+			);
+			$id_organizacion=$this->model_organizacion->insert('organizaciones',$organizacion);			
+			redirect('login/insert_administrador/'.$id_organizacion.'');			
+		}
+		$this->load->view('template/body', $data);
+	}
+
+		function insert_administrador($id_organizacion){
+		$id_organizacion=$id_organizacion;
+		$data['organizacion']=$this->model_organizacion->get_by_id('organizaciones', $id_organizacion);
+		$data['nombre']='Registro';
+		$data['view']='administracion/usuarios/insert_administrador';
 		$this->load->library('form_validation');
 		$this->form_validation->set_rules('nombre', 'Nombre', 'trim|required|alpha|max_length[120]');
 		$this->form_validation->set_rules('apellido', 'Apellido', 'trim|required|alpha|max_length[120]');
@@ -66,11 +135,10 @@ class Login extends CI_Controller{
 			'email' => $this->input->post('email'),
 			'password' => md5($this->input->post('password'))
 			);
+		$data['id_organizacion']=$id_organizacion;
 		$this->model_usuarios->insert('usuarios',$data);
 		redirect('login', 'refresh');
-		}
-	
+		}	
 		$this->load->view('template/body', $data);
 	}
-
 }

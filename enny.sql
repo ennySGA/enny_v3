@@ -1,9 +1,9 @@
--- phpMyAdmin SQL Dump
+- phpMyAdmin SQL Dump
 -- version 2.10.3
 -- http://www.phpmyadmin.net
 -- 
 -- Servidor: localhost
--- Tiempo de generación: 03-07-2013 a las 12:49:01
+-- Tiempo de generación: 03-07-2013 a las 15:48:42
 -- Versión del servidor: 5.0.51
 -- Versión de PHP: 5.2.6
 
@@ -129,13 +129,14 @@ CREATE TABLE `organizaciones` (
   `tamano` varchar(120) NOT NULL,
   `logo` varchar(150) NOT NULL default 'logos/no_logo.jpg',
   PRIMARY KEY  (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
 
 -- 
 -- Volcar la base de datos para la tabla `organizaciones`
 -- 
 
-INSERT INTO `organizaciones` VALUES (1, 'Enny', 'Casa de Chente', 'No me la se', '58000', 'Morelia, Mich.', 'Servicio de algo', 'Chica', 'logos/1_logo.jpg');
+INSERT INTO `organizaciones` VALUES (1, 'Enny', 'Casa de Chente', 'No me la sé', '58001', 'Morelia, Mich.', 'Servicio de algo', 'Chica', 'logos/1_logo.jpg');
+INSERT INTO `organizaciones` VALUES (12, 'Pemex', 'Los Pinos', 'Centro', '10000', 'Ciudad de Mexico', 'Petroleo', 'Grande', 'logos/12_logo.jpg');
 
 -- --------------------------------------------------------
 
@@ -154,7 +155,7 @@ CREATE TABLE `usuarios` (
   `created` timestamp NOT NULL default CURRENT_TIMESTAMP,
   `avatar` varchar(150) NOT NULL default 'avatars/no_avatar.jpg',
   PRIMARY KEY  (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
 
 -- 
 -- Volcar la base de datos para la tabla `usuarios`
@@ -162,5 +163,4 @@ CREATE TABLE `usuarios` (
 
 INSERT INTO `usuarios` VALUES (1, 1, 'DonVito', 'aaa', 'H', 'a@a.com', '827ccb0eea8a706c4c34a16891f84e7b', '2013-06-28 20:23:39', 'avatars/1_avatar.jpg');
 INSERT INTO `usuarios` VALUES (2, 1, 'Julio', 'Flores', 'H', 'julio@kno.com', 'e10adc3949ba59abbe56e057f20f883e', '2013-06-29 22:18:26', 'avatars/no_avatar.jpg');
-INSERT INTO `usuarios` VALUES (5, 0, 'Vito', 'Corleone', 'H', 'b@b.com', '827ccb0eea8a706c4c34a16891f84e7b', '2013-06-30 20:25:22', 'avatars/no_avatar.jpg');
-INSERT INTO `usuarios` VALUES (6, 0, 'ache', 'jota', 'H', 'jota@123.com', '93279e3308bdbbeed946fc965017f67a', '2013-06-30 20:46:34', 'avatars/no_avatar.jpg');
+INSERT INTO `usuarios` VALUES (8, 12, 'Enrique', 'Martinez', 'H', 'mexico@hotmail.com', 'e10adc3949ba59abbe56e057f20f883e', '2013-07-03 16:03:56', 'avatars/no_avatar.jpg');

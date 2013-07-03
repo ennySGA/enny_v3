@@ -6,6 +6,17 @@ class Model_organizacion extends MY_Model{
         parent::__construct();
     }
 
+    function insert($table,$organizacion){
+    	$this->db->insert($table, $organizacion);
+    	return $this->db->insert_id();
+    }
+
+    function get_by_id($table, $id){
+        $this->db->where('id', $id);
+        $query=$this->db->get($table);
+        return $query->row();
+    }
+
     public function update_logo($id_organizacion){
 		if($_FILES['logo']['error'] == 0){
 		    $relative_url = 'logos/'.$this->upload->file_name;

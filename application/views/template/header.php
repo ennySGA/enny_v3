@@ -36,8 +36,8 @@
                 </li>
                 <li class="btn btn-inverse dropdown" id="menu-config"><a href="#" data-toggle="dropdown" data-target="#menu-config" class="dropdown-toggle"><i class="icon icon-cog"></i> <span class="text">Configuración</span><b class="caret"></b></a>
                     <ul class="dropdown-menu">
-                        <li><a class="usereEdit" title="" href="<?php echo base_url()."usuarios/update"; ?>">Edita tu perfil</a></li>
-                        <li><a class="passEdit" title="" href="<?php echo base_url()."usuarios/update_password"; ?>">Cambia tu contraseña</a></li>
+                        <li><a class="usereEdit" title="" href="<?php echo base_url()."administracion/update_usuario"; ?>">Edita tu perfil</a></li>
+                        <li><a class="passEdit" title="" href="<?php echo base_url()."administracion/update_password"; ?>">Cambia tu contraseña</a></li>
                     </ul>
                 </li>
                 <li class="btn btn-inverse"><a title="" href="<?php echo base_url()?>sitio/logout"><i class="icon icon-share-alt"></i> <span class="text">Salir</span></a></li>
@@ -54,7 +54,7 @@
 					<ul>
 						<li><a href=""><i class="icon icon-th"></i> <span>Organigrama</span></a></li>
 						<li><a href="" ><i class="icon icon-user"></i> <span>Integrantes</span></a></li>
-						<li><a href="<?php echo base_url()."organizacion"; ?>"><i class="icon icon-list-alt"></i> <span>Información</span></a></li>
+						<li><a href="<?php echo base_url()."administracion/profile_organizacion"; ?>"><i class="icon icon-list-alt"></i> <span>Información</span></a></li>
 
 					</ul>
 				</li>

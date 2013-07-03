@@ -47,6 +47,8 @@
 	</div>
 </div>
 
+
 <?php echo anchor('legislaciones/insert', 'Agregar ley', 'class="btn btn-primary"'); ?>
 
 <?php echo anchor('sitio', 'Volver', 'class="btn btn-danger"'); ?>
+
