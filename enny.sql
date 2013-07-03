@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 -- 
 -- Servidor: localhost
--- Tiempo de generación: 01-07-2013 a las 18:23:21
+-- Tiempo de generación: 03-07-2013 a las 12:49:01
 -- Versión del servidor: 5.0.51
 -- Versión de PHP: 5.2.6
 
@@ -52,6 +52,40 @@ CREATE TABLE `eventos` (
 
 INSERT INTO `eventos` VALUES (1, 1, 'Pinche partyson', 'partyson loco en la empresa.', '2013-06-30');
 INSERT INTO `eventos` VALUES (2, 1, 'Junta de SGA', 'junta importante.', '2013-07-09');
+
+-- --------------------------------------------------------
+
+-- 
+-- Estructura de tabla para la tabla `leyes`
+-- 
+
+CREATE TABLE `leyes` (
+  `id` int(11) NOT NULL auto_increment,
+  `nombre` varchar(120) NOT NULL,
+  `tipo` varchar(120) NOT NULL,
+  `autoridad` varchar(120) NOT NULL,
+  `actualizacion` varchar(120) NOT NULL,
+  `descripcion` text NOT NULL,
+  `ult_act` date NOT NULL,
+  `articulo` varchar(120) NOT NULL,
+  `nivel` varchar(120) NOT NULL,
+  `requisitos` varchar(255) NOT NULL,
+  `fuente` varchar(120) NOT NULL,
+  `cumple` varchar(2) NOT NULL,
+  `created` timestamp NOT NULL default CURRENT_TIMESTAMP,
+  `id_organizacion` int(11) NOT NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
+
+-- 
+-- Volcar la base de datos para la tabla `leyes`
+-- 
+
+INSERT INTO `leyes` VALUES (1, 'Ley de tu mamá', 'Ley', 'PFP', 'No', 'Ley de tu puta madre', '2013-07-02', '145', 'Local', 'NA', 'http://tumama.com', 'No', '2013-07-02 17:37:18', 1);
+INSERT INTO `leyes` VALUES (2, 'ley', 'Ley', 'no hay', 'as', 'tampoco', '1212-12-12', '56', 'Local', 'NA', 'google.com', 'Si', '2013-07-02 19:47:55', 1);
+INSERT INTO `leyes` VALUES (3, 'ley loca', 'Norma', 'sagarpa', '', 'menos cero nada.', '2013-04-24', '65', 'Estatal', 'NA', 'www.sagarpa.com', 'No', '2013-07-02 21:24:53', 1);
+INSERT INTO `leyes` VALUES (4, 'ley bien pinche loca a la verga', 'Norma', 'el pputo FBI cabrones', 'todas puto todas', 'esta es una pinche descripcion bien vergas we, pero cabron asi de a madres', '0000-00-00', 'el 34', 'Federal', 'todos a la verga', 'www.hom.com', 'Si', '2013-07-02 21:29:42', 1);
+INSERT INTO `leyes` VALUES (5, 'ley 5', 'Otro', 'CIA', 'no', 'decripcion djjd', '2013-01-02', '345', 'Federal', 'NA', 'elrincondelvago.com', 'Si', '2013-07-03 11:19:01', 1);
 
 -- --------------------------------------------------------
 
@@ -126,7 +160,7 @@ CREATE TABLE `usuarios` (
 -- Volcar la base de datos para la tabla `usuarios`
 -- 
 
-INSERT INTO `usuarios` VALUES (1, 1, 'Ivan', 'aaa', 'H', 'a@a.com', 'e10adc3949ba59abbe56e057f20f883e', '2013-06-28 20:23:39', 'avatars/1_avatar.jpg');
+INSERT INTO `usuarios` VALUES (1, 1, 'DonVito', 'aaa', 'H', 'a@a.com', '827ccb0eea8a706c4c34a16891f84e7b', '2013-06-28 20:23:39', 'avatars/1_avatar.jpg');
 INSERT INTO `usuarios` VALUES (2, 1, 'Julio', 'Flores', 'H', 'julio@kno.com', 'e10adc3949ba59abbe56e057f20f883e', '2013-06-29 22:18:26', 'avatars/no_avatar.jpg');
 INSERT INTO `usuarios` VALUES (5, 0, 'Vito', 'Corleone', 'H', 'b@b.com', '827ccb0eea8a706c4c34a16891f84e7b', '2013-06-30 20:25:22', 'avatars/no_avatar.jpg');
 INSERT INTO `usuarios` VALUES (6, 0, 'ache', 'jota', 'H', 'jota@123.com', '93279e3308bdbbeed946fc965017f67a', '2013-06-30 20:46:34', 'avatars/no_avatar.jpg');
