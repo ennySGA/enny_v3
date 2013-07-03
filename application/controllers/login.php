@@ -128,14 +128,20 @@ class Login extends CI_Controller{
 		$this->form_validation->set_rules('password', 'Contraseña', 'trim|required|min_length[4]|max_length[32]|alpha_dash');
 		$this->form_validation->set_rules('password2', 'Confirma tu contraseña', 'trim|required|matches[password]');
 		if($this->form_validation->run() != FALSE){
+			if($this->input->post('sexo')=='M'){
+				$avatar='avatars/mujer.png';
+			}
+			else{
+				$avatar='avatars/hombre.png';
+			}
 			$data = array(
 			'nombre' => $this->input->post('nombre'),
 			'apellido' => $this->input->post('apellido'),
 			'sexo' => $this->input->post('sexo'),
 			'email' => $this->input->post('email'),
-			'password' => md5($this->input->post('password'))
+			'password' => md5($this->input->post('password')),
+			'avatar' => $avatar
 			);
-		$data['id_organizacion']=$id_organizacion;
 		$this->model_usuarios->insert('usuarios',$data);
 		redirect('login', 'refresh');
 		}	
