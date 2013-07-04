@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 -- 
 -- Servidor: localhost
--- Tiempo de generación: 03-07-2013 a las 16:49:47
+-- Tiempo de generación: 03-07-2013 a las 20:52:04
 -- Versión del servidor: 5.0.51
 -- Versión de PHP: 5.2.6
 
@@ -81,10 +81,7 @@ CREATE TABLE `leyes` (
 -- Volcar la base de datos para la tabla `leyes`
 -- 
 
-INSERT INTO `leyes` VALUES (1, 'Ley de tu mamá', 'Ley', 'PFP', 'No', 'Ley de tu puta madre', '2013-07-02', '145', 'Local', 'NA', 'http://tumama.com', 'No', '2013-07-02 17:37:18', 1);
-INSERT INTO `leyes` VALUES (2, 'ley', 'Ley', 'no hay', 'as', 'tampoco', '1212-12-12', '56', 'Local', 'NA', 'google.com', 'Si', '2013-07-02 19:47:55', 1);
 INSERT INTO `leyes` VALUES (3, 'ley loca', 'Norma', 'sagarpa', '', 'menos cero nada.', '2013-04-24', '65', 'Estatal', 'NA', 'www.sagarpa.com', 'No', '2013-07-02 21:24:53', 1);
-INSERT INTO `leyes` VALUES (4, 'ley bien pinche loca a la verga', 'Norma', 'el pputo FBI cabrones', 'todas puto todas', 'esta es una pinche descripcion bien vergas we, pero cabron asi de a madres', '0000-00-00', 'el 34', 'Federal', 'todos a la verga', 'www.hom.com', 'Si', '2013-07-02 21:29:42', 1);
 INSERT INTO `leyes` VALUES (5, 'ley 5', 'Otro', 'CIA', 'no', 'decripcion djjd', '2013-01-02', '345', 'Federal', 'NA', 'elrincondelvago.com', 'Si', '2013-07-03 11:19:01', 1);
 
 -- --------------------------------------------------------
@@ -129,15 +126,15 @@ CREATE TABLE `organizaciones` (
   `tamano` varchar(120) NOT NULL,
   `logo` varchar(150) NOT NULL default 'logos/no_logo.jpg',
   PRIMARY KEY  (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=14 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=16 ;
 
 -- 
 -- Volcar la base de datos para la tabla `organizaciones`
 -- 
 
 INSERT INTO `organizaciones` VALUES (1, 'Enny', 'Casa de Chente', 'No me la sé', '58001', 'Morelia, Mich.', 'Servicio de algo', 'Chica', 'logos/1_logo.jpg');
-INSERT INTO `organizaciones` VALUES (13, 'tec', 'esa', 'otra', '10000', 'Ciudad de Mexico', 'Petroleo', 'Grande', 'logos/no_logo.jpg');
 INSERT INTO `organizaciones` VALUES (12, 'Pemex', 'Los Pinos', 'Centro', '10000', 'Ciudad de Mexico', 'Petroleo', 'Grande', 'logos/12_logo.jpg');
+INSERT INTO `organizaciones` VALUES (15, 'Instituto Tecnológico de Morelia', 'Libramiento', 'Lomas del Tec', '10000', 'Morelia, Mich.', 'Educación', 'Grande', 'logos/no_logo.jpg');
 
 -- --------------------------------------------------------
 
@@ -155,14 +152,15 @@ CREATE TABLE `usuarios` (
   `password` varchar(32) NOT NULL,
   `created` timestamp NOT NULL default CURRENT_TIMESTAMP,
   `avatar` varchar(150) NOT NULL,
+  `puesto` varchar(120) NOT NULL,
   PRIMARY KEY  (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=12 ;
 
 -- 
 -- Volcar la base de datos para la tabla `usuarios`
 -- 
 
-INSERT INTO `usuarios` VALUES (1, 1, 'DonVito', 'aaa', 'H', 'a@a.com', '827ccb0eea8a706c4c34a16891f84e7b', '2013-06-28 20:23:39', 'avatars/1_avatar.jpg');
-INSERT INTO `usuarios` VALUES (2, 1, 'Julio', 'Flores', 'H', 'julio@kno.com', 'e10adc3949ba59abbe56e057f20f883e', '2013-06-29 22:18:26', 'avatars/hombre.png');
-INSERT INTO `usuarios` VALUES (8, 12, 'Enrique', 'Martinez', 'H', 'mexico@hotmail.com', 'e10adc3949ba59abbe56e057f20f883e', '2013-07-03 16:03:56', 'avatars/hombre.png');
-INSERT INTO `usuarios` VALUES (9, 0, 'paulina', 'rivas', 'M', 's@s.com', 'e10adc3949ba59abbe56e057f20f883e', '2013-07-03 16:48:49', 'avatars/mujer.png');
+INSERT INTO `usuarios` VALUES (1, 1, 'Vito', 'Corleone', 'H', 'a@a.com', 'e10adc3949ba59abbe56e057f20f883e', '2013-06-28 20:23:39', 'avatars/1_avatar.jpg', '');
+INSERT INTO `usuarios` VALUES (2, 1, 'Julio', 'Flores', 'H', 'julio@kno.com', 'e10adc3949ba59abbe56e057f20f883e', '2013-06-29 22:18:26', 'avatars/hombre.png', '');
+INSERT INTO `usuarios` VALUES (8, 12, 'Enrique', 'Martinez', 'H', 'mexico@hotmail.com', 'e10adc3949ba59abbe56e057f20f883e', '2013-07-03 16:03:56', 'avatars/hombre.png', '');
+INSERT INTO `usuarios` VALUES (11, 15, 'Paulina', 'Rivas', 'M', 'prueba@tec.com', 'e10adc3949ba59abbe56e057f20f883e', '2013-07-03 19:48:00', 'avatars/mujer.png', '');

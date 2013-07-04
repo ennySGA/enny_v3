@@ -97,7 +97,9 @@ class Legislaciones extends CI_Controller{
 		$this->load->view('template/body', $data);
 	}
 
-	function delete(){
-		$data['nombre']='Legislación ambiental';
+	function delete($id){
+		$id=$id;
+		$this->model_legislaciones->delete('leyes', $id);
+		redirect('legislaciones');
 	}
 }

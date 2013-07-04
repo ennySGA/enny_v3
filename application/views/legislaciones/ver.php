@@ -28,7 +28,24 @@
 					<?php foreach ($leyes as $row): ?> 
 						<tr>
 							<td><div class="btn btn-small"><?php echo anchor('legislaciones/update/'.$row->id.'', ' ', 'class="icon-edit"'); ?></div></td>
-							<td><div class="btn btn-small"><?php echo anchor('legislaciones/delete/'.$row->id.'', ' ', 'class="icon-remove"'); ?></div></td>
+							<td>
+								<div class="btn btn-small">
+									<a href="#myAlert_<?php echo $row->id; ?>" data-toggle="modal" class="icon-remove"> </a>
+									<div id="myAlert_<?php echo $row->id; ?>" class="modal hide">
+										<div class="modal-header">
+											<button data-dismiss="modal" class="close" type="button">×</button>
+											<h3>Eliminar ley</h3>
+										</div>
+										<div class="modal-body">
+											<p><h4>¿Está seguro de eliminar <?php echo $row->nombre; ?>?</h4></p>
+										</div>
+										<div class="modal-footer">
+											<?php echo anchor('legislaciones/delete/'.$row->id.'', '<i class="icon-remove"></i> Confirmar', 'class="btn"') ?>
+											<a data-dismiss="modal" class="btn" href="#">Cancelar</a>
+										</div>
+									</div>
+								</div>
+							</td>
 							<td><?php echo $row->nombre;?></td>
 							<td><?php echo $row->tipo;?></td>
 							<td><?php echo $row->autoridad;?></td>
@@ -47,8 +64,6 @@
 	</div>
 </div>
 
+<?php echo anchor('legislaciones/insert', '<i class="icon-plus"></i> Agregar ley', 'class="btn"') ?>
 
-<?php echo anchor('legislaciones/insert', 'Agregar ley', 'class="btn btn-primary"'); ?>
-
-<?php echo anchor('sitio', 'Volver', 'class="btn btn-danger"'); ?>
-
+<?php echo anchor('sitio', '<i class="icon-home"></i> Regresar', 'class="btn"') ?>

@@ -16,9 +16,12 @@ class Administracion extends CI_Controller{
 	}
 		   													/* ----- U S U A R I O S ----- */
 	public function profile_usuario(){
+		$id=$this->session->userdata('id');
+		$data['usuarios']=$this->model_usuarios->get_by_id('usuarios',$id);
+		// print_r($data['usuarios']);
 		$data['nombre']='Datos de usuario';
 		$data['view']='administracion/usuarios/profile_usuario';
-		$this->load->view('template/body');
+		$this->load->view('template/body', $data);
 	}
 
 	function insert_usuario(){
@@ -74,7 +77,7 @@ class Administracion extends CI_Controller{
 					'correo'=> $user->email
 				);
 				$this->session->set_userdata($data);
-				redirect('sitio');
+				redirect('administracion/profile_usuario');
 			}
 		}
 		$this->load->view('template/body', $data);

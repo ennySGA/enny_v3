@@ -23,7 +23,7 @@ echo form_fieldset('Agregar ley');
 <?php echo form_textarea($data); ?>
 
 <p>Ultima actualización <span style="color: gray;"><i>(aaaa-mm-dd)</i></span></p>
-<?php echo form_input('ult_act', '', 'class="datetimepicker"'); ?>
+<?php echo form_input('ult_act', '', 'class="datepicker"'); ?>
 
 <p>Artículo</p>
 <?php echo form_input('articulo', ''); ?>

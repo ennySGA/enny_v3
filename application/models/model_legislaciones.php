@@ -17,4 +17,8 @@ class Model_legislaciones extends MY_Model{
     	return $query->result();
     }
 
+    function delete($table, $id){
+        $this->db->where('id', $id);
+        $this->db->delete($table);
+    }
 }
