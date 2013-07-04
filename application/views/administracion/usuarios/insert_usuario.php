@@ -1,5 +1,5 @@
 <?php
-echo form_open('administracion/insert_usuario');
+echo form_open('administracion/insert_usuario/'.$usuarios->id_organizacion.'');
 echo form_fieldset('Registro de nuevo usuario');
 ?>
 
@@ -12,6 +12,9 @@ echo form_fieldset('Registro de nuevo usuario');
 <p>Sexo</p>
 <p>H <input type="radio" name="sexo" value="H" <?php echo set_radio('sexo', 'H', 'Hombre'); ?> />
 M <input type="radio" name="sexo" value="M" <?php echo set_radio('sexo', 'M', 'Mujer'); ?> /></p>
+
+<p>Puesto</p>
+<?php echo form_input('puesto', ''); ?>
 
 <p>Correo electrónico</p>
 <?php echo form_input('email', ''); ?>

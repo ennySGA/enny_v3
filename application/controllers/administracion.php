@@ -15,35 +15,55 @@ class Administracion extends CI_Controller{
 		}
 	}
 		   													/* ----- U S U A R I O S ----- */
-	public function profile_usuario(){
+	public function profile_usuario(){      /* Perfil de usuario logueado */
 		$id=$this->session->userdata('id');
 		$data['usuarios']=$this->model_usuarios->get_by_id('usuarios',$id);
-		// print_r($data['usuarios']);
 		$data['nombre']='Datos de usuario';
 		$data['view']='administracion/usuarios/profile_usuario';
 		$this->load->view('template/body', $data);
 	}
 
+	function profile_usuarios(){  /* Usuarios de la organización */
+		$id_organizacion=$this->session->userdata('id_organizacion');
+		$data['id_organizacion']=$id_organizacion;
+		$data['usuarios']=$this->model_usuarios->get_all_by_id('usuarios',$id_organizacion);
+		$data['nombre']='Usuarios';
+		$data['view']='administracion/usuarios/profile_usuarios';
+		$this->load->view('template/body', $data);
+	}
+
 	function insert_usuario(){
-		$data=array('nombre'=>'Registro');
-		$data['view']='administracion/usuarios/nuevo_usuario';
+		$id_organizacion=$this->session->userdata('id_organizacion');
+		$data['usuarios']=$this->model_usuarios->get_by_id('usuarios',$id_organizacion);
+		$data['nombre']='Registro';
+		$data['view']='administracion/usuarios/insert_usuario';
 		$this->load->library('form_validation');
 		$this->form_validation->set_rules('nombre', 'Nombre', 'trim|required|alpha|max_length[120]');
 		$this->form_validation->set_rules('apellido', 'Apellido', 'trim|required|alpha|max_length[120]');
 		$this->form_validation->set_rules('sexo', 'Sexo', 'trim|required');
 		$this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email|is_unique[usuarios.email]');
+		$this->form_validation->set_rules('puesto', 'Puesto', 'trim|required|max_length[120]');
 		$this->form_validation->set_rules('password', 'Contraseña', 'trim|required|min_length[4]|max_length[32]|alpha_dash');
 		$this->form_validation->set_rules('password2', 'Confirma tu contraseña', 'trim|required|matches[password]');
 		if($this->form_validation->run() != FALSE){
+			if($this->input->post('sexo')=='M'){
+				$avatar='avatars/mujer.png';
+			}
+			else{
+				$avatar='avatars/hombre.png';
+			}
 			$data = array(
+			'id_organizacion' => $id_organizacion,
 			'nombre' => $this->input->post('nombre'),
 			'apellido' => $this->input->post('apellido'),
 			'sexo' => $this->input->post('sexo'),
 			'email' => $this->input->post('email'),
-			'password' => md5($this->input->post('password'))
+			'puesto' => $this->input->post('puesto'),
+			'password' => md5($this->input->post('password')),
+			'avatar' => $avatar
 			);
 		$this->model_usuarios->insert('usuarios',$data);
-		redirect('login', 'refresh');
+		redirect('administracion/profile_usuarios', 'refresh');
 		}
 	
 		$this->load->view('template/body', $data);
@@ -57,16 +77,19 @@ class Administracion extends CI_Controller{
 		$data['apellido'] = $this->session->userdata('apellido');
 		$data['correo'] = $this->session->userdata('correo');
 		$data['avatar'] = $this->session->userdata('avatar');
+		$data['puesto'] = $this->session->userdata('puesto');
 		$data['view']='administracion/usuarios/update_usuario';
 		$this->load->library('form_validation');
 		$this->form_validation->set_rules('nombre', 'Nombre', 'trim|required|alpha|max_length[120]');
 		$this->form_validation->set_rules('apellido', 'Apellido', 'trim|required|alpha|max_length[120]');
+		$this->form_validation->set_rules('puesto', 'Puesto', 'trim|required|max_length[120]');
 		$this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email|edit_unique[usuarios.email.'.$id.']');
 		if($this->form_validation->run() != FALSE){
 			$data = array(
 			'nombre' => $this->input->post('nombre'),
 			'apellido' => $this->input->post('apellido'),
 			'email' => $this->input->post('email'),
+			'puesto' => $this->input->post('puesto')
 			);
 		$this->model_usuarios->update('usuarios', $data, $id);
 		$user=$this->model_usuarios->get_by_id('usuarios', $id);
@@ -74,7 +97,8 @@ class Administracion extends CI_Controller{
 				$data=array(
 					'username' => $user->nombre,
 					'apellido' => $user->apellido,
-					'correo'=> $user->email
+					'correo'=> $user->email,
+					'puesto' => $this->input->post('puesto')
 				);
 				$this->session->set_userdata($data);
 				redirect('administracion/profile_usuario');

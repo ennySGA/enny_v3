@@ -53,7 +53,7 @@
 					<a href="#"><i class="icon icon-asterisk"></i> <span>Organización</span></a>
 					<ul>
 						<li><a href=""><i class="icon icon-th"></i> <span>Organigrama</span></a></li>
-						<li><a href="" ><i class="icon icon-user"></i> <span>Integrantes</span></a></li>
+						<li><a href="<?php echo base_url()."administracion/profile_usuarios"; ?>" ><i class="icon icon-user"></i> <span>Usuarios</span></a></li>
 						<li><a href="<?php echo base_url()."administracion/profile_organizacion"; ?>"><i class="icon icon-list-alt"></i> <span>Información</span></a></li>
 
 					</ul>

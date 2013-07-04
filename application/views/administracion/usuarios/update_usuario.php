@@ -32,6 +32,9 @@ echo form_fieldset('Edita tu perfil');
 <p>Apellido</p>
 <?php echo form_input('apellido', set_value('apellido', $apellido)); ?>
 
+<p>Puesto</p>
+<?php echo form_input('puesto', set_value('puesto', $puesto)); ?>
+
 <p>Correo electrónico</p>
 <?php echo form_input('email', set_value('email', $correo)); ?>
 

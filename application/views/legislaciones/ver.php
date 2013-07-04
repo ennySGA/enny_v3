@@ -1,4 +1,3 @@
-<?php // print_r($leyes); ?>
 <div class="widget-box">
 	<div class="widget-title">
 		<span class="icon">

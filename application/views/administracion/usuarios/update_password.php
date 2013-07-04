@@ -13,6 +13,7 @@ echo form_fieldset('Cambia tu contraseña');
 <?php echo form_password('password2', ''); ?>
 
 <?php echo form_fieldset_close();
+
 echo form_submit('enviar', 'Guardar', 'class="btn btn-primary"');
 echo " ";
 echo anchor('sitio', 'Cancelar', 'class="btn btn-danger"');

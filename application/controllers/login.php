@@ -33,7 +33,8 @@ class Login extends CI_Controller{
 					'id'=>$user->id,
 					'correo'=> $user->email,
 					'password'=> $user->password,
-					'avatar'=> $user->avatar
+					'avatar'=> $user->avatar,
+					'puesto' => $user->puesto
 				);
 				$this->session->set_userdata($data);
 				redirect('sitio');
