@@ -115,7 +115,7 @@ class Login extends CI_Controller{
 		$this->load->view('template/body', $data);
 	}
 
-		function insert_administrador($id_organizacion){
+		public function insert_administrador($id_organizacion){
 		$id_organizacion=$id_organizacion;
 		$data['organizacion']=$this->model_organizacion->get_by_id('organizaciones', $id_organizacion);
 		$data['nombre']='Registro';
@@ -135,6 +135,7 @@ class Login extends CI_Controller{
 				$avatar='avatars/hombre.png';
 			}
 			$data = array(
+			'id_organizacion'=> $id_organizacion,
 			'nombre' => $this->input->post('nombre'),
 			'apellido' => $this->input->post('apellido'),
 			'sexo' => $this->input->post('sexo'),
