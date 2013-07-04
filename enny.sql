@@ -1,23 +1,3 @@
--- phpMyAdmin SQL Dump
--- version 2.10.3
--- http://www.phpmyadmin.net
--- 
--- Servidor: localhost
--- Tiempo de generaci贸n: 04-07-2013 a las 15:06:51
--- Versi贸n del servidor: 5.0.51
--- Versi贸n de PHP: 5.2.6
-
-SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
-
--- 
--- Base de datos: `enny_v3`
--- 
-
--- --------------------------------------------------------
-
--- 
--- Estructura de tabla para la tabla `checklist`
--- 
 
 CREATE TABLE `checklist` (
   `id` int(11) NOT NULL auto_increment,
@@ -37,7 +17,7 @@ INSERT INTO `checklist` VALUES (11, 'Apropiada a la naturaleza de sus actividade
 INSERT INTO `checklist` VALUES (17, 'Apropiada a la magnitud de sus actividades, productos y servicios.', 1, 23, '2013-04-14 15:52:26');
 INSERT INTO `checklist` VALUES (18, 'Apropiada a los impactos ambientales de sus actividades productos y servios.', 0, 23, '2013-04-14 16:14:44');
 INSERT INTO `checklist` VALUES (19, 'Incluye un compromiso de mejora continua y prevenci?n de la contaminaci?n.', 1, 23, '2013-04-14 16:14:44');
-INSERT INTO `checklist` VALUES (20, 'Incluye el compromiso de cumplir con los requisitos legales aplicables y con otros requisitos que la organizaci?n suscriba relacionados con sus aspectos ambientales.', 0, 23, '2013-04-14 16:17:03');
+INSERT INTO `checklist` VALUES (20, 'Incluye el compromiso de cumplir con los requisitos legales aplicables y con otros requisitos que la organizaci?n suscriba relacionados con sus aspectos ambientales.', 1, 23, '2013-04-14 16:17:03');
 INSERT INTO `checklist` VALUES (21, 'Proporcionar el marco de referencia para establecer y revisar los objetivos y las metas ambientales.', 1, 23, '2013-04-14 16:17:38');
 INSERT INTO `checklist` VALUES (22, 'Proporcionar el marco de referencia para establecer y revisar los objetivos y las metas ambientales.', 1, 23, '2013-07-02 15:56:30');
 
@@ -81,7 +61,7 @@ INSERT INTO `comentarios` VALUES (50, 'Que royo', 1, 27, '2013-07-03 18:49:59');
 INSERT INTO `comentarios` VALUES (51, 'Almorranas en el yoyo.', 1, 27, '2013-07-03 18:50:11');
 INSERT INTO `comentarios` VALUES (52, 'Saquen las chelas!', 1, 27, '2013-07-03 19:17:47');
 INSERT INTO `comentarios` VALUES (53, 'Hola! :D', 7, 27, '2013-07-04 11:34:37');
-INSERT INTO `comentarios` VALUES (54, 'probando la integraci贸n\r\n', 1, 27, '2013-07-04 14:52:32');
+INSERT INTO `comentarios` VALUES (54, 'probando la integraci髇\r\n', 1, 27, '2013-07-04 14:52:32');
 
 -- --------------------------------------------------------
 
@@ -129,6 +109,36 @@ CREATE TABLE `eventos` (
 
 INSERT INTO `eventos` VALUES (1, 1, 'Pinche partyson', 'partyson loco en la empresa.', '2013-06-30');
 INSERT INTO `eventos` VALUES (2, 1, 'Junta de SGA', 'junta importante.', '2013-07-09');
+
+-- --------------------------------------------------------
+
+-- 
+-- Estructura de tabla para la tabla `leyes`
+-- 
+
+CREATE TABLE `leyes` (
+  `id` int(11) NOT NULL auto_increment,
+  `id_organizacion` int(11) NOT NULL,
+  `nombre` varchar(120) NOT NULL,
+  `tipo` varchar(120) NOT NULL,
+  `autoridad` varchar(120) NOT NULL,
+  `actualizacion` varchar(120) NOT NULL,
+  `descripcion` text NOT NULL,
+  `ult_act` date NOT NULL,
+  `articulo` varchar(120) NOT NULL,
+  `nivel` varchar(120) NOT NULL,
+  `requisitos` text NOT NULL,
+  `fuente` varchar(255) NOT NULL,
+  `cumple` varchar(10) NOT NULL,
+  `created` timestamp NOT NULL default CURRENT_TIMESTAMP,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+
+-- 
+-- Volcar la base de datos para la tabla `leyes`
+-- 
+
+INSERT INTO `leyes` VALUES (1, 1, 'Ley de proteccion ambiental', 'Ley', 'SAGARPA', 'No', 'Ley para proteger al ambiente', '2002-11-02', '65', 'Federal', 'NA', 'sagarpa.com', 'Si', '2013-07-04 16:28:20');
 
 -- --------------------------------------------------------
 
@@ -209,7 +219,7 @@ INSERT INTO `text` VALUES (23, 'dos', 12, '2013-04-14 00:52:40');
 INSERT INTO `text` VALUES (24, 'mama', 13, '2013-04-14 01:27:45');
 INSERT INTO `text` VALUES (25, 'luna', 14, '2013-04-14 01:34:59');
 INSERT INTO `text` VALUES (26, 'poliglota', 15, '2013-04-14 01:42:57');
-INSERT INTO `text` VALUES (27, 'Redacta tu pol铆tica ambiental de acuerdo a los requisitos mostrados.\r\n\r\nRecuerda que la creaci贸on de tu pol铆tica es un proceso iterativo.\r\n', 16, '2013-04-14 01:54:11');
+INSERT INTO `text` VALUES (27, 'Redacta tu pol韙ica ambiental de acuerdo a los requisitos mostrados.\r\n\r\nRecuerda que la creaci髈n de tu pol韙ica es un proceso iterativo.\r\n', 16, '2013-04-14 01:54:11');
 
 -- --------------------------------------------------------
 
