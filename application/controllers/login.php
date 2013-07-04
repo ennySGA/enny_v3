@@ -122,8 +122,8 @@ class Login extends CI_Controller{
 		$data['nombre']='Registro';
 		$data['view']='administracion/usuarios/insert_administrador';
 		$this->load->library('form_validation');
-		$this->form_validation->set_rules('nombre', 'Nombre', 'trim|required|alpha|max_length[120]');
-		$this->form_validation->set_rules('apellido', 'Apellido', 'trim|required|alpha|max_length[120]');
+		$this->form_validation->set_rules('nombre', 'Nombre', 'trim|required|max_length[120]');
+		$this->form_validation->set_rules('apellido', 'Apellido', 'trim|required|max_length[120]');
 		$this->form_validation->set_rules('sexo', 'Sexo', 'trim|required');
 		$this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email|is_unique[usuarios.email]');
 		$this->form_validation->set_rules('password', 'Contraseña', 'trim|required|min_length[4]|max_length[32]|alpha_dash');

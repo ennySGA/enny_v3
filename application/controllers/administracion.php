@@ -24,8 +24,10 @@ class Administracion extends CI_Controller{
 	}
 
 	function profile_usuarios(){  /* Usuarios de la organización */
+		$id_user=$this->session->userdata('id');
 		$id_organizacion=$this->session->userdata('id_organizacion');
 		$data['id_organizacion']=$id_organizacion;
+		$data['id_user']=$id_user;
 		$data['usuarios']=$this->model_usuarios->get_all_by_id('usuarios',$id_organizacion);
 		$data['nombre']='Usuarios';
 		$data['view']='administracion/usuarios/profile_usuarios';
@@ -38,7 +40,7 @@ class Administracion extends CI_Controller{
 		$data['nombre']='Registro';
 		$data['view']='administracion/usuarios/insert_usuario';
 		$this->load->library('form_validation');
-		$this->form_validation->set_rules('nombre', 'Nombre', 'trim|required|alpha|max_length[120]');
+		$this->form_validation->set_rules('nombre', 'Nombre', 'trim|required|max_length[120]');
 		$this->form_validation->set_rules('apellido', 'Apellido', 'trim|required|alpha|max_length[120]');
 		$this->form_validation->set_rules('sexo', 'Sexo', 'trim|required');
 		$this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email|is_unique[usuarios.email]');
@@ -98,7 +100,7 @@ class Administracion extends CI_Controller{
 					'username' => $user->nombre,
 					'apellido' => $user->apellido,
 					'correo'=> $user->email,
-					'puesto' => $this->input->post('puesto')
+					'puesto' => $user->puesto
 				);
 				$this->session->set_userdata($data);
 				redirect('administracion/profile_usuario');
@@ -134,6 +136,7 @@ class Administracion extends CI_Controller{
 		$data['apellido'] = $this->session->userdata('apellido');
 		$data['correo'] = $this->session->userdata('correo');
 		$data['avatar'] = $this->session->userdata('avatar');
+		$data['puesto'] = $this->session->userdata('puesto');
 		if (!$_FILES) {												
 			redirect('usuarios/update');
 		}

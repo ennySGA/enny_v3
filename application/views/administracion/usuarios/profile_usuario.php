@@ -1,11 +1,11 @@
 <table>
 	<tbody>
 		<tr>
-			<td rowspan=4><img src="<?php echo base_url().$usuarios->avatar; ?>" /></td>
+			<td rowspan=4><img src="<?php echo base_url().$usuarios->avatar; ?>" width="175" height="175"  /></td>
 		</tr>
 		<tr>
 		</tr>
-			<td><h1><?php echo  $usuarios->nombre." ".$usuarios->apellido; ?></h1></td>
+			<td><h2><?php echo  $usuarios->nombre." ".$usuarios->apellido; ?></h2></td>
 		<tr>
 			<td>
 				<div class="widget-box">

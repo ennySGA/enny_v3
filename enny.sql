@@ -1,3 +1,23 @@
+-- phpMyAdmin SQL Dump
+-- version 2.10.3
+-- http://www.phpmyadmin.net
+-- 
+-- Servidor: localhost
+-- Tiempo de generación: 04-07-2013 a las 18:13:45
+-- Versión del servidor: 5.0.51
+-- Versión de PHP: 5.2.6
+
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+
+-- 
+-- Base de datos: `enny`
+-- 
+
+-- --------------------------------------------------------
+
+-- 
+-- Estructura de tabla para la tabla `checklist`
+-- 
 
 CREATE TABLE `checklist` (
   `id` int(11) NOT NULL auto_increment,
@@ -245,7 +265,7 @@ CREATE TABLE `usuarios` (
 -- Volcar la base de datos para la tabla `usuarios`
 -- 
 
-INSERT INTO `usuarios` VALUES (1, 1, 'Vito', 'Corleone', 'H', 'a@a.com', 'e10adc3949ba59abbe56e057f20f883e', '2013-06-28 20:23:39', 'avatars/1_avatar.jpg', 'Presidente');
+INSERT INTO `usuarios` VALUES (1, 1, 'DonVito', 'Corleone', 'H', 'a@a.com', 'e10adc3949ba59abbe56e057f20f883e', '2013-06-28 20:23:39', 'avatars/1_avatar.jpg', 'Presidente');
 INSERT INTO `usuarios` VALUES (2, 1, 'Julio', 'Flores', 'H', 'julio@kno.com', 'e10adc3949ba59abbe56e057f20f883e', '2013-06-29 22:18:26', 'avatars/hombre.png', '');
 INSERT INTO `usuarios` VALUES (8, 12, 'Enrique', 'Martinez', 'H', 'mexico@hotmail.com', 'e10adc3949ba59abbe56e057f20f883e', '2013-07-03 16:03:56', 'avatars/hombre.png', '');
 INSERT INTO `usuarios` VALUES (11, 15, 'Paulina', 'Rivas', 'M', 'prueba@tec.com', 'e10adc3949ba59abbe56e057f20f883e', '2013-07-03 19:48:00', 'avatars/mujer.png', '');
