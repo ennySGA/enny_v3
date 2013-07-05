@@ -3,14 +3,14 @@
 -- http://www.phpmyadmin.net
 -- 
 -- Servidor: localhost
--- Tiempo de generaci髇: 04-07-2013 a las 18:13:45
--- Versi髇 del servidor: 5.0.51
--- Versi髇 de PHP: 5.2.6
+-- Tiempo de generaci贸n: 04-07-2013 a las 22:29:01
+-- Versi贸n del servidor: 5.0.51
+-- Versi贸n de PHP: 5.2.6
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 
 -- 
--- Base de datos: `enny`
+-- Base de datos: `enny_v3`
 -- 
 
 -- --------------------------------------------------------
@@ -37,7 +37,7 @@ INSERT INTO `checklist` VALUES (11, 'Apropiada a la naturaleza de sus actividade
 INSERT INTO `checklist` VALUES (17, 'Apropiada a la magnitud de sus actividades, productos y servicios.', 1, 23, '2013-04-14 15:52:26');
 INSERT INTO `checklist` VALUES (18, 'Apropiada a los impactos ambientales de sus actividades productos y servios.', 0, 23, '2013-04-14 16:14:44');
 INSERT INTO `checklist` VALUES (19, 'Incluye un compromiso de mejora continua y prevenci?n de la contaminaci?n.', 1, 23, '2013-04-14 16:14:44');
-INSERT INTO `checklist` VALUES (20, 'Incluye el compromiso de cumplir con los requisitos legales aplicables y con otros requisitos que la organizaci?n suscriba relacionados con sus aspectos ambientales.', 1, 23, '2013-04-14 16:17:03');
+INSERT INTO `checklist` VALUES (20, 'Incluye el compromiso de cumplir con los requisitos legales aplicables y con otros requisitos que la organizaci?n suscriba relacionados con sus aspectos ambientales.', 0, 23, '2013-04-14 16:17:03');
 INSERT INTO `checklist` VALUES (21, 'Proporcionar el marco de referencia para establecer y revisar los objetivos y las metas ambientales.', 1, 23, '2013-04-14 16:17:38');
 INSERT INTO `checklist` VALUES (22, 'Proporcionar el marco de referencia para establecer y revisar los objetivos y las metas ambientales.', 1, 23, '2013-07-02 15:56:30');
 
@@ -54,7 +54,7 @@ CREATE TABLE `comentarios` (
   `id_widget` int(11) NOT NULL,
   `creado` timestamp NOT NULL default CURRENT_TIMESTAMP,
   PRIMARY KEY  (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=55 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=56 ;
 
 -- 
 -- Volcar la base de datos para la tabla `comentarios`
@@ -81,7 +81,8 @@ INSERT INTO `comentarios` VALUES (50, 'Que royo', 1, 27, '2013-07-03 18:49:59');
 INSERT INTO `comentarios` VALUES (51, 'Almorranas en el yoyo.', 1, 27, '2013-07-03 18:50:11');
 INSERT INTO `comentarios` VALUES (52, 'Saquen las chelas!', 1, 27, '2013-07-03 19:17:47');
 INSERT INTO `comentarios` VALUES (53, 'Hola! :D', 7, 27, '2013-07-04 11:34:37');
-INSERT INTO `comentarios` VALUES (54, 'probando la integraci髇\r\n', 1, 27, '2013-07-04 14:52:32');
+INSERT INTO `comentarios` VALUES (54, 'probando la integraci贸n\r\n', 1, 27, '2013-07-04 14:52:32');
+INSERT INTO `comentarios` VALUES (55, 'Saludos', 16, 27, '2013-07-04 17:03:35');
 
 -- --------------------------------------------------------
 
@@ -167,24 +168,26 @@ INSERT INTO `leyes` VALUES (1, 1, 'Ley de proteccion ambiental', 'Ley', 'SAGARPA
 -- 
 
 CREATE TABLE `metas` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL auto_increment,
   `id_estrategia` int(11) NOT NULL,
   `id_widget` int(11) NOT NULL,
   `nombre` varchar(120) collate utf8_spanish_ci default NULL,
   `descripcion` varchar(255) collate utf8_spanish_ci default NULL,
-  `estado_actual` varchar(45) collate utf8_spanish_ci default NULL,
-  `estado_inicial` varchar(45) collate utf8_spanish_ci default NULL,
-  `estado_lograr` varchar(45) collate utf8_spanish_ci default NULL,
+  `edo_actual` varchar(45) collate utf8_spanish_ci default NULL,
+  `edo_inicial` varchar(45) collate utf8_spanish_ci default NULL,
+  `edo_meta` varchar(45) collate utf8_spanish_ci default NULL,
   `fecha_meta` date default NULL,
+  `creada` datetime NOT NULL,
   PRIMARY KEY  (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=5 ;
 
 -- 
 -- Volcar la base de datos para la tabla `metas`
 -- 
 
-INSERT INTO `metas` VALUES (1, 1, 0, 'Metanfetaminas', 'esta es una meta feliz', NULL, NULL, NULL, '2013-06-30');
-INSERT INTO `metas` VALUES (2, 1, 0, 'Metroid', 'Samus was a girl all the time.', NULL, NULL, NULL, '2013-07-10');
+INSERT INTO `metas` VALUES (1, 0, 0, 'Metanfetaminas', 'esta es una meta feliz', NULL, NULL, NULL, '2013-06-30', '0000-00-00 00:00:00');
+INSERT INTO `metas` VALUES (2, 0, 0, 'Metroid', 'Samus was a girl all the time.', NULL, NULL, NULL, '2013-07-10', '0000-00-00 00:00:00');
+INSERT INTO `metas` VALUES (4, 1, 35, 'meta feliz', 'esta es una meta feliz (:', '10', '10', '20', '2013-08-14', '2013-07-04 21:56:03');
 
 -- --------------------------------------------------------
 
@@ -203,13 +206,14 @@ CREATE TABLE `organizaciones` (
   `tamano` varchar(120) NOT NULL,
   `logo` varchar(150) NOT NULL default 'logos/no_logo.jpg',
   PRIMARY KEY  (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 -- 
 -- Volcar la base de datos para la tabla `organizaciones`
 -- 
 
 INSERT INTO `organizaciones` VALUES (1, 'Enny', 'Casa de Chente', 'No me la se', '58000', 'Morelia, Mich.', 'Servicio de algo', 'Chica', 'logos/1_logo.jpg');
+INSERT INTO `organizaciones` VALUES (2, 'enny_sga', 'casa de chentito', 'las tijeras', '58337', 'Morelia Michoac谩n', 'Servicios de gesti贸n', 'Chica', 'logos/no_logo.jpg');
 
 -- --------------------------------------------------------
 
@@ -239,7 +243,7 @@ INSERT INTO `text` VALUES (23, 'dos', 12, '2013-04-14 00:52:40');
 INSERT INTO `text` VALUES (24, 'mama', 13, '2013-04-14 01:27:45');
 INSERT INTO `text` VALUES (25, 'luna', 14, '2013-04-14 01:34:59');
 INSERT INTO `text` VALUES (26, 'poliglota', 15, '2013-04-14 01:42:57');
-INSERT INTO `text` VALUES (27, 'Redacta tu pol韙ica ambiental de acuerdo a los requisitos mostrados.\r\n\r\nRecuerda que la creaci髈n de tu pol韙ica es un proceso iterativo.\r\n', 16, '2013-04-14 01:54:11');
+INSERT INTO `text` VALUES (27, 'Redacta tu pol铆tica ambiental de acuerdo a los requisitos mostrados.\r\n\r\nRecuerda que la creaci贸on de tu pol铆tica es un proceso iterativo.\r\n', 16, '2013-04-14 01:54:11');
 
 -- --------------------------------------------------------
 
@@ -259,18 +263,19 @@ CREATE TABLE `usuarios` (
   `avatar` varchar(150) NOT NULL,
   `puesto` varchar(120) NOT NULL,
   PRIMARY KEY  (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=16 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=17 ;
 
 -- 
 -- Volcar la base de datos para la tabla `usuarios`
 -- 
 
-INSERT INTO `usuarios` VALUES (1, 1, 'DonVito', 'Corleone', 'H', 'a@a.com', 'e10adc3949ba59abbe56e057f20f883e', '2013-06-28 20:23:39', 'avatars/1_avatar.jpg', 'Presidente');
+INSERT INTO `usuarios` VALUES (1, 1, 'Vito', 'Corleone', 'H', 'a@a.com', 'e10adc3949ba59abbe56e057f20f883e', '2013-06-28 20:23:39', 'avatars/1_avatar.jpg', 'Presidente');
 INSERT INTO `usuarios` VALUES (2, 1, 'Julio', 'Flores', 'H', 'julio@kno.com', 'e10adc3949ba59abbe56e057f20f883e', '2013-06-29 22:18:26', 'avatars/hombre.png', '');
 INSERT INTO `usuarios` VALUES (8, 12, 'Enrique', 'Martinez', 'H', 'mexico@hotmail.com', 'e10adc3949ba59abbe56e057f20f883e', '2013-07-03 16:03:56', 'avatars/hombre.png', '');
 INSERT INTO `usuarios` VALUES (11, 15, 'Paulina', 'Rivas', 'M', 'prueba@tec.com', 'e10adc3949ba59abbe56e057f20f883e', '2013-07-03 19:48:00', 'avatars/mujer.png', '');
 INSERT INTO `usuarios` VALUES (12, 1, 'Esclavo', 'Uno', 'H', 'esclavo@esclavo.com', 'e10adc3949ba59abbe56e057f20f883e', '2013-07-03 22:55:44', 'avatars/hombre.png', 'Barrendero');
 INSERT INTO `usuarios` VALUES (15, 1, 'Esclava', 'Dos', 'M', 'esclava@esclava.com', 'e10adc3949ba59abbe56e057f20f883e', '2013-07-04 00:01:48', 'avatars/mujer.png', 'Barrendero');
+INSERT INTO `usuarios` VALUES (16, 2, 'edward', 'pm', 'H', 'edward_beats@hotmail.com', 'e10adc3949ba59abbe56e057f20f883e', '2013-07-04 17:02:58', 'avatars/16_avatar.jpg', '');
 
 -- --------------------------------------------------------
 
@@ -287,7 +292,7 @@ CREATE TABLE `widget_obj` (
   `creado` timestamp NOT NULL default CURRENT_TIMESTAMP,
   `active` tinyint(1) NOT NULL default '1',
   PRIMARY KEY  (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=30 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=36 ;
 
 -- 
 -- Volcar la base de datos para la tabla `widget_obj`
@@ -296,3 +301,4 @@ CREATE TABLE `widget_obj` (
 INSERT INTO `widget_obj` VALUES (16, 'text', 'Instrucciones_01', '', 1, '2013-04-14 01:54:11', 1);
 INSERT INTO `widget_obj` VALUES (23, 'check', 'Requisitos de PA', '', 1, '2013-04-14 11:53:01', 1);
 INSERT INTO `widget_obj` VALUES (27, 'comentario', 'Comentarios', '', 1, '2013-04-15 00:50:42', 1);
+INSERT INTO `widget_obj` VALUES (35, 'meta', 'Metas_01', '', 1, '2013-07-04 21:56:03', 1);

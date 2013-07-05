@@ -31,6 +31,71 @@ class Estrategias extends CI_Controller{
 		if(!$estrategia){
 			show_404();
 		}
+
+		/*Alta widget meta*/
+		if($this->input->post('nva_meta')){
+			$this->load->library('form_validation');
+			$config=array(
+				array(
+                 'field'   => 'widget_nombre',
+                 'label'   => 'Nombre del widget',
+                 'rules'   => 'required'
+                )
+			);
+			$this->form_validation->set_rules($config);
+			if ($this->form_validation->run()){
+
+				$widget=array(
+					'nombre'=>$this->input->post('widget_nombre'),
+					'tipo'=>'meta',
+					'creado'=>date('Y-m-d H:i:s'),
+					'id_estrategia'=>$this->input->post('id_estrategia')
+				);
+				
+				
+				$config=array(
+					array(
+	                 'field'   => 'nombre',
+	                 'label'   => 'Nombre de la meta',
+	                 'rules'   => 'required'
+	                ),
+	                array(
+	                 'field'   => 'edo_inicial',
+	                 'label'   => 'Estado inicial',
+	                 'rules'   => 'required'
+	                ),
+	                array(
+	                 'field'   => 'edo_meta',
+	                 'label'   => 'Estado meta',
+	                 'rules'   => 'required'
+	                ),
+	                array(
+	                 'field'   => 'fecha_meta',
+	                 'label'   => 'Fecha de la meta',
+	                 'rules'   => 'required'
+	                )
+				);
+                $this->form_validation->set_rules($config);
+                if($this->form_validation->run()){
+					$id_w=$this->model_widgets->insert_w($widget);
+                	$meta=array(
+						'id_widget'=>$id_w,
+						'id_estrategia'=>$this->input->post('id_estrategia'),
+						'nombre'=>$this->input->post('nombre'),
+						'descripcion'=>$this->input->post('descripcion'),
+						'fecha_meta'=>$this->input->post('fecha_meta'),
+						'edo_inicial'=>$this->input->post('edo_inicial'),
+						'edo_actual'=>$this->input->post('edo_inicial'),
+						'edo_meta'=>$this->input->post('edo_meta'),
+						'creada'=>date('Y-m-d H:i:s'),
+					);
+					$this->model_metas->insert('metas',$meta);
+					$data['success']="Widget meta agregado.";
+                }
+
+			}
+
+		}
 		
 		$data['widgets']=$this->model_widgets->get_all_by_estrategia($id_estrategia);
 
@@ -64,6 +129,7 @@ class Estrategias extends CI_Controller{
 		$data['title']='Objetivo';
 		$this->load->view('template/body',$data);
 	}
+
 
 	public function update_text($id_estrategia){
 		if($this->input->post('edit-text')){
