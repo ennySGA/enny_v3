@@ -59,7 +59,7 @@
 					</ul>
 				</li>
 				<li><a href="<?php echo base_url()."areas"; ?>"><i class="icon icon-screenshot"></i> <span>Áreas</span></a></li>
-				<li><a href="<?php echo base_url()."tipos"; ?>"><i class="icon icon-leaf"></i> <span>Aspectos ambientales</span></a></li>
+				<li><a href="<?php echo base_url()."aspectos/tipos_aspectos"; ?>"><i class="icon icon-leaf"></i> <span>Aspectos ambientales</span></a></li>
 				<li><a href="<?php echo base_url()."legislaciones"; ?>"><i class="icon icon-briefcase"></i> <span>Legislación ambiental</span></a></li>
 				<li class="submenu">
 					<a href="#"><i class="icon icon-signal"></i> <span>Resultados</span></a>

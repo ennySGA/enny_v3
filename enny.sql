@@ -3,15 +3,40 @@
 -- http://www.phpmyadmin.net
 -- 
 -- Servidor: localhost
--- Tiempo de generaci贸n: 05-07-2013 a las 21:52:26
--- Versi贸n del servidor: 5.0.51
--- Versi贸n de PHP: 5.2.6
+-- Tiempo de generaci髇: 05-07-2013 a las 23:39:25
+-- Versi髇 del servidor: 5.0.51
+-- Versi髇 de PHP: 5.2.6
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 
 -- 
--- Base de datos: `enny_v3`
+-- Base de datos: `enny`
 -- 
+
+-- --------------------------------------------------------
+
+-- 
+-- Estructura de tabla para la tabla `aspectos`
+-- 
+
+CREATE TABLE `aspectos` (
+  `id` int(11) NOT NULL auto_increment,
+  `id_tipo` int(11) NOT NULL,
+  `nombre` varchar(120) NOT NULL,
+  `descripcion` text NOT NULL,
+  `active` binary(1) NOT NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
+
+-- 
+-- Volcar la base de datos para la tabla `aspectos`
+-- 
+
+INSERT INTO `aspectos` VALUES (1, 2, 'Aspecto ambiental 1', 'Aspecto ambientaloso', 0x31);
+INSERT INTO `aspectos` VALUES (2, 2, 'aspecto ambiental 2', 'safasdf', 0x31);
+INSERT INTO `aspectos` VALUES (3, 2, 'aspecto 3', 'troix', 0x31);
+INSERT INTO `aspectos` VALUES (4, 4, 'aspecto 5', 'asdf', 0x31);
+INSERT INTO `aspectos` VALUES (5, 4, 'asd', 'sadg', 0x31);
 
 -- --------------------------------------------------------
 
@@ -26,21 +51,17 @@ CREATE TABLE `checklist` (
   `id_widget` int(11) NOT NULL,
   `creado` timestamp NOT NULL default CURRENT_TIMESTAMP,
   PRIMARY KEY  (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=32 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=28 ;
 
 -- 
 -- Volcar la base de datos para la tabla `checklist`
 -- 
 
-INSERT INTO `checklist` VALUES (31, 'three', 1, 46, '2013-07-05 21:36:23');
-INSERT INTO `checklist` VALUES (30, 'two', 0, 46, '2013-07-05 21:36:23');
-INSERT INTO `checklist` VALUES (29, 'death', 1, 46, '2013-07-05 21:36:23');
-INSERT INTO `checklist` VALUES (28, 'uno', 0, 46, '2013-07-05 21:36:23');
 INSERT INTO `checklist` VALUES (23, 'Ahorrar agua', 1, 23, '2013-07-04 13:42:52');
 INSERT INTO `checklist` VALUES (11, 'Apropiada a la naturaleza de sus actividades, productos y servicios.', 1, 23, '2013-04-14 11:53:01');
 INSERT INTO `checklist` VALUES (17, 'Apropiada a la magnitud de sus actividades, productos y servicios.', 1, 23, '2013-04-14 15:52:26');
 INSERT INTO `checklist` VALUES (18, 'Apropiada a los impactos ambientales de sus actividades productos y servios.', 0, 23, '2013-04-14 16:14:44');
-INSERT INTO `checklist` VALUES (19, 'Incluye un compromiso de mejora continua y prevenci贸n de la contaminaci贸n.', 1, 23, '2013-04-14 16:14:44');
+INSERT INTO `checklist` VALUES (19, 'Incluye un compromiso de mejora continua y prevenci?n de la contaminaci?n.', 1, 23, '2013-04-14 16:14:44');
 INSERT INTO `checklist` VALUES (20, 'Incluye el compromiso de cumplir con los requisitos legales aplicables y con otros requisitos que la organizaci?n suscriba relacionados con sus aspectos ambientales.', 0, 23, '2013-04-14 16:17:03');
 INSERT INTO `checklist` VALUES (21, 'Proporcionar el marco de referencia para establecer y revisar los objetivos y las metas ambientales.', 1, 23, '2013-04-14 16:17:38');
 INSERT INTO `checklist` VALUES (22, 'Proporcionar el marco de referencia para establecer y revisar los objetivos y las metas ambientales.', 1, 23, '2013-07-02 15:56:30');
@@ -58,7 +79,7 @@ CREATE TABLE `comentarios` (
   `id_widget` int(11) NOT NULL,
   `creado` timestamp NOT NULL default CURRENT_TIMESTAMP,
   PRIMARY KEY  (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=58 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=56 ;
 
 -- 
 -- Volcar la base de datos para la tabla `comentarios`
@@ -85,10 +106,8 @@ INSERT INTO `comentarios` VALUES (50, 'Que royo', 1, 27, '2013-07-03 18:49:59');
 INSERT INTO `comentarios` VALUES (51, 'Almorranas en el yoyo.', 1, 27, '2013-07-03 18:50:11');
 INSERT INTO `comentarios` VALUES (52, 'Saquen las chelas!', 1, 27, '2013-07-03 19:17:47');
 INSERT INTO `comentarios` VALUES (53, 'Hola! :D', 7, 27, '2013-07-04 11:34:37');
-INSERT INTO `comentarios` VALUES (54, 'probando la integraci贸n\r\n', 1, 27, '2013-07-04 14:52:32');
+INSERT INTO `comentarios` VALUES (54, 'probando la integraci髇\r\n', 1, 27, '2013-07-04 14:52:32');
 INSERT INTO `comentarios` VALUES (55, 'Saludos', 16, 27, '2013-07-04 17:03:35');
-INSERT INTO `comentarios` VALUES (56, 'Me est谩 gustando mucho como va quedando ;)', 16, 41, '2013-07-05 15:50:08');
-INSERT INTO `comentarios` VALUES (57, 'bliblibli ??', 16, 41, '2013-07-05 15:50:49');
 
 -- --------------------------------------------------------
 
@@ -128,20 +147,15 @@ CREATE TABLE `eventos` (
   `nombre` varchar(120) collate utf8_spanish_ci default NULL,
   `descripcion` varchar(255) collate utf8_spanish_ci default NULL,
   `fecha_evento` date default NULL,
-  `created` datetime NOT NULL,
   PRIMARY KEY  (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=11 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=3 ;
 
 -- 
 -- Volcar la base de datos para la tabla `eventos`
 -- 
 
-INSERT INTO `eventos` VALUES (1, 1, 0, 'Pinche partyson', 'partyson loco en la empresa.', '2013-06-30', '0000-00-00 00:00:00');
-INSERT INTO `eventos` VALUES (2, 1, 0, 'Junta de SGA', 'junta importante.', '2013-07-09', '0000-00-00 00:00:00');
-INSERT INTO `eventos` VALUES (5, 1, 44, 'Pinche partyson', 'blblblb', '2013-07-24', '2013-07-05 16:43:56');
-INSERT INTO `eventos` VALUES (6, 1, 44, 'jolgorio', 'party', '2013-07-24', '2013-07-05 19:03:08');
-INSERT INTO `eventos` VALUES (7, 1, 44, 'huateque', 'blblb', '2013-07-16', '2013-07-05 19:03:26');
-INSERT INTO `eventos` VALUES (10, 1, 45, 'bacanal', '', '2013-07-17', '2013-07-05 20:30:04');
+INSERT INTO `eventos` VALUES (1, 1, 0, 'Pinche partyson', 'partyson loco en la empresa.', '2013-06-30');
+INSERT INTO `eventos` VALUES (2, 1, 0, 'Junta de SGA', 'junta importante.', '2013-07-09');
 
 -- --------------------------------------------------------
 
@@ -164,6 +178,7 @@ CREATE TABLE `leyes` (
   `fuente` varchar(255) NOT NULL,
   `cumple` varchar(10) NOT NULL,
   `created` timestamp NOT NULL default CURRENT_TIMESTAMP,
+  `active` binary(1) NOT NULL,
   PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
@@ -171,7 +186,7 @@ CREATE TABLE `leyes` (
 -- Volcar la base de datos para la tabla `leyes`
 -- 
 
-INSERT INTO `leyes` VALUES (1, 1, 'Ley de proteccion ambiental', 'Ley', 'SAGARPA', 'No', 'Ley para proteger al ambiente', '2002-11-02', '65', 'Federal', 'NA', 'sagarpa.com', 'Si', '2013-07-04 16:28:20');
+INSERT INTO `leyes` VALUES (1, 1, 'Ley de proteccion ambiental', 'Ley', 'SAGARPA', 'No', 'Ley para proteger al ambiente', '2002-11-02', '65', 'Federal', 'NA', 'sagarpa.com', 'Si', '2013-07-04 16:28:20', 0x00);
 
 -- --------------------------------------------------------
 
@@ -191,7 +206,7 @@ CREATE TABLE `metas` (
   `fecha_meta` date default NULL,
   `creada` datetime NOT NULL,
   PRIMARY KEY  (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=9 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=5 ;
 
 -- 
 -- Volcar la base de datos para la tabla `metas`
@@ -199,11 +214,7 @@ CREATE TABLE `metas` (
 
 INSERT INTO `metas` VALUES (1, 0, 0, 'Metanfetaminas', 'esta es una meta feliz', NULL, NULL, NULL, '2013-06-30', '0000-00-00 00:00:00');
 INSERT INTO `metas` VALUES (2, 0, 0, 'Metroid', 'Samus was a girl all the time.', NULL, NULL, NULL, '2013-07-10', '0000-00-00 00:00:00');
-INSERT INTO `metas` VALUES (4, 1, 35, 'meta feliz', 'esta es una meta feliz (:', '15', '10', '20', '2013-08-15', '2013-07-04 21:56:03');
-INSERT INTO `metas` VALUES (5, 1, 36, 'otra meta', 'bkbkkbk', '10', '10', '150', '2013-07-24', '2013-07-04 22:34:57');
-INSERT INTO `metas` VALUES (6, 1, 35, 'Meta dos', 'descripci贸n breve', '150', '100', '150', '2013-08-06', '2013-07-05 12:18:06');
-INSERT INTO `metas` VALUES (7, 1, 35, 'Metra tres', 'blblblbl', '80', '50', '170', '2013-09-19', '2013-07-05 12:25:26');
-INSERT INTO `metas` VALUES (8, 1, 35, 'otra meta', 'blblblb', '78', '78', '93', '2013-10-10', '2013-07-05 14:24:05');
+INSERT INTO `metas` VALUES (4, 1, 35, 'meta feliz', 'esta es una meta feliz (:', '10', '10', '20', '2013-08-14', '2013-07-04 21:56:03');
 
 -- --------------------------------------------------------
 
@@ -229,7 +240,7 @@ CREATE TABLE `organizaciones` (
 -- 
 
 INSERT INTO `organizaciones` VALUES (1, 'Enny', 'Casa de Chente', 'No me la se', '58000', 'Morelia, Mich.', 'Servicio de algo', 'Chica', 'logos/1_logo.jpg');
-INSERT INTO `organizaciones` VALUES (2, 'enny_sga', 'casa de chentito', 'las tijeras', '58337', 'Morelia Michoac谩n', 'Servicios de gesti贸n', 'Chica', 'logos/no_logo.jpg');
+INSERT INTO `organizaciones` VALUES (2, 'enny_sga', 'casa de chentito', 'las tijeras', '58337', 'Morelia Michoac醤', 'Servicios de gesti髇', 'Chica', 'logos/no_logo.jpg');
 
 -- --------------------------------------------------------
 
@@ -259,8 +270,32 @@ INSERT INTO `text` VALUES (23, 'dos', 12, '2013-04-14 00:52:40');
 INSERT INTO `text` VALUES (24, 'mama', 13, '2013-04-14 01:27:45');
 INSERT INTO `text` VALUES (25, 'luna', 14, '2013-04-14 01:34:59');
 INSERT INTO `text` VALUES (26, 'poliglota', 15, '2013-04-14 01:42:57');
-INSERT INTO `text` VALUES (27, 'Redacta tu pol铆tica ambiental de acuerdo a los requisitos mostrados.\r\n\r\nRecuerda que la creaci贸on de tu pol铆tica es un proceso iterativo.\r\n', 16, '2013-04-14 01:54:11');
-INSERT INTO `text` VALUES (29, 'este texto est谩 muy fel铆z (: <-- solo miralo!! ta bien pinche feliz!! :D', 40, '2013-07-05 15:21:38');
+INSERT INTO `text` VALUES (27, 'Redacta tu pol韙ica ambiental de acuerdo a los requisitos mostrados.\r\n\r\nRecuerda que la creaci髈n de tu pol韙ica es un proceso iterativo.\r\n', 16, '2013-04-14 01:54:11');
+INSERT INTO `text` VALUES (28, '324', 36, '2013-07-05 22:34:20');
+INSERT INTO `text` VALUES (29, 'sdf', 37, '2013-07-05 22:35:13');
+
+-- --------------------------------------------------------
+
+-- 
+-- Estructura de tabla para la tabla `tipos_aspectos`
+-- 
+
+CREATE TABLE `tipos_aspectos` (
+  `id` int(11) NOT NULL auto_increment,
+  `id_organizacion` int(11) NOT NULL,
+  `nombre` varchar(120) NOT NULL,
+  `descripcion` text NOT NULL,
+  `active` binary(1) NOT NULL default '1',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+
+-- 
+-- Volcar la base de datos para la tabla `tipos_aspectos`
+-- 
+
+INSERT INTO `tipos_aspectos` VALUES (2, 1, 'Tipo 1', 'Tipo de Aspecto 1', 0x31);
+INSERT INTO `tipos_aspectos` VALUES (3, 1, 'Tipo 2', 'Tipo de aspecto 2', 0x30);
+INSERT INTO `tipos_aspectos` VALUES (4, 1, 'Tipo 3', 'tipo 3 de aspectos', 0x31);
 
 -- --------------------------------------------------------
 
@@ -279,6 +314,7 @@ CREATE TABLE `usuarios` (
   `created` timestamp NOT NULL default CURRENT_TIMESTAMP,
   `avatar` varchar(150) NOT NULL,
   `puesto` varchar(120) NOT NULL,
+  `active` binary(1) NOT NULL,
   PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=17 ;
 
@@ -286,13 +322,13 @@ CREATE TABLE `usuarios` (
 -- Volcar la base de datos para la tabla `usuarios`
 -- 
 
-INSERT INTO `usuarios` VALUES (1, 1, 'Vito', 'Corleone', 'H', 'a@a.com', 'e10adc3949ba59abbe56e057f20f883e', '2013-06-28 20:23:39', 'avatars/1_avatar.jpg', 'Presidente');
-INSERT INTO `usuarios` VALUES (2, 1, 'Julio', 'Flores', 'H', 'julio@kno.com', 'e10adc3949ba59abbe56e057f20f883e', '2013-06-29 22:18:26', 'avatars/hombre.png', '');
-INSERT INTO `usuarios` VALUES (8, 12, 'Enrique', 'Martinez', 'H', 'mexico@hotmail.com', 'e10adc3949ba59abbe56e057f20f883e', '2013-07-03 16:03:56', 'avatars/hombre.png', '');
-INSERT INTO `usuarios` VALUES (11, 15, 'Paulina', 'Rivas', 'M', 'prueba@tec.com', 'e10adc3949ba59abbe56e057f20f883e', '2013-07-03 19:48:00', 'avatars/mujer.png', '');
-INSERT INTO `usuarios` VALUES (12, 1, 'Esclavo', 'Uno', 'H', 'esclavo@esclavo.com', 'e10adc3949ba59abbe56e057f20f883e', '2013-07-03 22:55:44', 'avatars/hombre.png', 'Barrendero');
-INSERT INTO `usuarios` VALUES (15, 1, 'Esclava', 'Dos', 'M', 'esclava@esclava.com', 'e10adc3949ba59abbe56e057f20f883e', '2013-07-04 00:01:48', 'avatars/mujer.png', 'Barrendero');
-INSERT INTO `usuarios` VALUES (16, 2, 'edward', 'pm', 'H', 'edward_beats@hotmail.com', 'e10adc3949ba59abbe56e057f20f883e', '2013-07-04 17:02:58', 'avatars/16_avatar.jpg', '');
+INSERT INTO `usuarios` VALUES (1, 1, 'Vito', 'Corleone', 'H', 'a@a.com', 'e10adc3949ba59abbe56e057f20f883e', '2013-06-28 20:23:39', 'avatars/1_avatar.jpg', 'Presidente', 0x00);
+INSERT INTO `usuarios` VALUES (2, 1, 'Julio', 'Flores', 'H', 'julio@kno.com', 'e10adc3949ba59abbe56e057f20f883e', '2013-06-29 22:18:26', 'avatars/hombre.png', '', 0x00);
+INSERT INTO `usuarios` VALUES (8, 12, 'Enrique', 'Martinez', 'H', 'mexico@hotmail.com', 'e10adc3949ba59abbe56e057f20f883e', '2013-07-03 16:03:56', 'avatars/hombre.png', '', 0x00);
+INSERT INTO `usuarios` VALUES (11, 15, 'Paulina', 'Rivas', 'M', 'prueba@tec.com', 'e10adc3949ba59abbe56e057f20f883e', '2013-07-03 19:48:00', 'avatars/mujer.png', '', 0x00);
+INSERT INTO `usuarios` VALUES (12, 1, 'Esclavo', 'Uno', 'H', 'esclavo@esclavo.com', 'e10adc3949ba59abbe56e057f20f883e', '2013-07-03 22:55:44', 'avatars/hombre.png', 'Barrendero', 0x00);
+INSERT INTO `usuarios` VALUES (15, 1, 'Esclava', 'Dos', 'M', 'esclava@esclava.com', 'e10adc3949ba59abbe56e057f20f883e', '2013-07-04 00:01:48', 'avatars/mujer.png', 'Barrendero', 0x00);
+INSERT INTO `usuarios` VALUES (16, 2, 'edward', 'pm', 'H', 'edward_beats@hotmail.com', 'e10adc3949ba59abbe56e057f20f883e', '2013-07-04 17:02:58', 'avatars/16_avatar.jpg', '', 0x00);
 
 -- --------------------------------------------------------
 
@@ -309,7 +345,7 @@ CREATE TABLE `widget_obj` (
   `creado` timestamp NOT NULL default CURRENT_TIMESTAMP,
   `active` tinyint(1) NOT NULL default '1',
   PRIMARY KEY  (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=47 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=38 ;
 
 -- 
 -- Volcar la base de datos para la tabla `widget_obj`
@@ -318,10 +354,6 @@ CREATE TABLE `widget_obj` (
 INSERT INTO `widget_obj` VALUES (16, 'text', 'Instrucciones_01', '', 1, '2013-04-14 01:54:11', 1);
 INSERT INTO `widget_obj` VALUES (23, 'check', 'Requisitos de PA', '', 1, '2013-04-14 11:53:01', 1);
 INSERT INTO `widget_obj` VALUES (27, 'comentario', 'Comentarios', '', 1, '2013-04-15 00:50:42', 1);
-INSERT INTO `widget_obj` VALUES (36, 'meta', 'Meta_02', '', 1, '2013-07-04 22:34:57', 1);
-INSERT INTO `widget_obj` VALUES (35, 'meta', 'Metas_01_', '', 1, '2013-07-04 21:56:03', 1);
-INSERT INTO `widget_obj` VALUES (40, 'text', 'Texto feliz (: ', '', 1, '2013-07-05 15:21:38', 1);
-INSERT INTO `widget_obj` VALUES (41, 'comentario', 'Sobre el desarrollo de esta aplicaci贸n', '', 1, '2013-07-05 15:50:08', 1);
-INSERT INTO `widget_obj` VALUES (44, 'evento', 'Eventos relacionados a esta madre', '', 1, '2013-07-05 16:43:56', 1);
-INSERT INTO `widget_obj` VALUES (45, 'evento', 'Otro panel de eventos', '', 1, '2013-07-05 19:04:06', 1);
-INSERT INTO `widget_obj` VALUES (46, 'check', 'Nuevo checklist', '', 1, '2013-07-05 21:36:23', 1);
+INSERT INTO `widget_obj` VALUES (35, 'meta', 'Metas_01', '', 1, '2013-07-04 21:56:03', 1);
+INSERT INTO `widget_obj` VALUES (36, 'text', 'texto', '', 1, '2013-07-05 22:34:20', 1);
+INSERT INTO `widget_obj` VALUES (37, 'text', 'sdf', '', 2, '2013-07-05 22:35:13', 1);

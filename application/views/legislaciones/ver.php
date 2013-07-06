@@ -1,3 +1,8 @@
+<div class="alert alert-info">
+En esta sección podrás consultar, agregar y editar las <strong>leyes</strong> y <strong>normas</strong> que rigen a tu organización.
+<a href="#" data-dismiss="alert" class="close">×</a>
+</div>
+
 <div class="widget-box">
 	<div class="widget-title">
 		<span class="icon">
@@ -6,7 +11,7 @@
 		<h5>Leyes</h5>
 	</div>
 		<div class="widget-content nopadding">
-			<table class="table table-bordered table-striped table-hover">
+			<table class="table table-bordered table-striped table-hover data-table">
 				<thead>
 					<tr>
 						<th colspan="2"><i class="icon-wrench"></i></th>

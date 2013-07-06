@@ -17,6 +17,12 @@ class MY_Model extends CI_Model {
 			return FALSE;
 		}
     }
+     function get_all_by_id($table, $id_organizacion){
+        $this->db->where('id_organizacion', $id_organizacion);
+        $this->db->where('active', 1);
+        $query=$this->db->get($table);
+        return $query->result();
+    }
     function get_by_id($table,$id){
     	$this->db->where('id', $id);
 		$data = $this->db->get($table);
