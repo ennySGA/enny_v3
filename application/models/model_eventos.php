@@ -7,4 +7,15 @@ class Model_eventos extends CI_Model{
 		$query=$this->db->get('eventos');
 		return $query->result();
 	}
+
+	public function get_all_by_widget($id_widget){
+		$this->db->where('id_widget',$id_widget);
+		$query=$this->db->order_by('created','asc');
+		$query=$this->db->get('eventos');
+		return $query->result();
+	}
+
+	public function delete_e($data){
+		$this->db->delete('eventos',$data);
+	}
 }

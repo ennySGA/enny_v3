@@ -5,6 +5,7 @@ class Model_widgets extends MY_Model{
 	public function get_all_by_estrategia($id_estrategia){
 		$this->db->where('id_estrategia',$id_estrategia);
 		$this->db->where('active','1');
+		$this->db->order_by('creado','desc');
 		$query=$this->db->get('widget_obj');
 		return $query->result();
 	}

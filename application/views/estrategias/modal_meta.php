@@ -1,15 +1,14 @@
-<div id="nueva-meta" class="modal hide" style="display: none;" aria-hidden="true">
+<div id="add_meta" class="modal hide" style="display: none;" aria-hidden="true">
 	<div class="modal-header">
 		<button data-dismiss="modal" class="close" type="button">×</button>
-		<h3>Agregar widget de metas</h3>
+		<h3>Agregar meta</h3>
 	</div>
 		
-	<form action='<?php echo base_url().'estrategias/single/'.$estrategia[0]->id; ?>' method='POST' class='form-vertical'>
+	<form action='<?php echo base_url().'estrategias/add_meta/'; ?>' method='POST' class='form-vertical'>
 		<div class='modal-body'>
-		
-			<input class="span7" type='text' name='widget_nombre' placeholder='Nombre del widget' value='' />
-			<br />
+
 			<input type='hidden' value='<?php echo $estrategia[0]->id;?>' name='id_estrategia'>
+			<input type='hidden' value='<?php echo $widget->id;?>' name='id_w'>
 
 			<div class='form-elements'>
 

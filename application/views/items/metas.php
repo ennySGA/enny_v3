@@ -24,13 +24,18 @@
 			<?php foreach($widget->rows as $meta){ ?>
 			<tr>
 				<td><?php echo $meta->nombre ?></td>
-				<td><?php echo $meta->edo_actual ?></td>
 				<td><?php echo $meta->edo_inicial ?></td>
+				<td><?php echo $meta->edo_actual ?></td>
 				<td><?php echo $meta->edo_meta ?></td>
 				<td><?php echo $meta->fecha_meta ?></td>
 			</tr>
 			<?php } ?>
 		</tbody>
 	</table>
-	<?php echo anchor('estrategias/single/'.$id, 'nueva meta', 'class="btn btn-primary"'); ?>
+	<a href="#add_meta" data-toggle="modal" class="btn btn-mini btn-primary">
+		agregar meta
+	</a>
+
+	<?php $this->load->view('estrategias/modal_meta'); ?>
+	<?php $this->load->view('estrategias/modal_editar_metas'); ?>
 </div>
