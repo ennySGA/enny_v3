@@ -29,7 +29,7 @@ class Aspectos extends CI_Controller{
 		$data['view']='aspectos/tipos_aspectos/insert';
 		$this->load->library('form_validation');
 		$this->form_validation->set_rules('nombre', 'Nombre', 'trim|required|max_length[120]');
-		$this->form_validation->set_rules('descripcion', 'Descripción', 'trim|required');
+		$this->form_validation->set_rules('descripcion', 'Descripción', 'trim');
 		if($this->form_validation->run() != FALSE){
 			$data = array(
 			'id_organizacion' => $id_organizacion,
@@ -50,7 +50,7 @@ class Aspectos extends CI_Controller{
 		$data['view']='aspectos/tipos_aspectos/update';
 		$this->load->library('form_validation');
 		$this->form_validation->set_rules('nombre', 'Nombre', 'trim|required|max_length[120]');
-		$this->form_validation->set_rules('descripcion', 'Descripción', 'trim|required');
+		$this->form_validation->set_rules('descripcion', 'Descripción', 'trim');
 		if($this->form_validation->run() != FALSE){
 			$data = array(
 			'nombre' => $this->input->post('nombre'),
@@ -86,7 +86,7 @@ class Aspectos extends CI_Controller{
 		$data['view']='aspectos/aspectos/insert';
 		$this->load->library('form_validation');
 		$this->form_validation->set_rules('nombre', 'Nombre', 'trim|required|max_length[120]');
-		$this->form_validation->set_rules('descripcion', 'Descripción', 'trim|required');
+		$this->form_validation->set_rules('descripcion', 'Descripción', 'trim');
 		if($this->form_validation->run() != FALSE){
 			$data = array(
 			'id_tipo' => $id_tipo,
@@ -100,28 +100,30 @@ class Aspectos extends CI_Controller{
 		$this->load->view('template/body', $data);
 	}
 
-	public function update_aspectos($id){
+	public function update_aspectos($id, $id_tipo){
 		$id=$id;
+		$id_tipo=$id_tipo;
 		$data['aspectos']=$this->model_aspectos->get_by_id('aspectos', $id);
 		$data['nombre']='Aspecto ambiental';
 		$data['view']='aspectos/aspectos/update';
 		$this->load->library('form_validation');
 		$this->form_validation->set_rules('nombre', 'Nombre', 'trim|required|max_length[120]');
-		$this->form_validation->set_rules('descripcion', 'Descripción', 'trim|required|alpha_dash|max_length[120]');
+		$this->form_validation->set_rules('descripcion', 'Descripción', 'trim');
 		if($this->form_validation->run() != FALSE){
 			$data = array(
 			'nombre' => $this->input->post('nombre'),
 			'descripcion' => $this->input->post('descripcion')
 			);
 		$this->model_aspectos->update('aspectos', $data, $id);
-		redirect('aspectos/aspectos_ambientales', 'refresh');
+		redirect('aspectos/aspectos_ambientales/'.$id_tipo.'', 'refresh');
 		}
 		$this->load->view('template/body', $data);
 	}
 
-	function delete_aspectos($id){
+	function delete_aspectos($id, $id_tipo){
 		$id=$id;
+		$id_tipo=$id_tipo;
 		$this->model_aspectos->delete('aspectos', $id);
-		redirect('aspectos/aspectos_ambientales');
+		redirect('aspectos/aspectos_ambientales/'.$id_tipo.'');
 	}
 }

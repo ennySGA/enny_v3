@@ -125,6 +125,7 @@ class Login extends CI_Controller{
 		$this->form_validation->set_rules('nombre', 'Nombre', 'trim|required|max_length[120]');
 		$this->form_validation->set_rules('apellido', 'Apellido', 'trim|required|max_length[120]');
 		$this->form_validation->set_rules('sexo', 'Sexo', 'trim|required');
+		$this->form_validation->set_rules('puesto', 'Puesto', 'trim|required');
 		$this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email|is_unique[usuarios.email]');
 		$this->form_validation->set_rules('password', 'Contraseña', 'trim|required|min_length[4]|max_length[32]|alpha_dash');
 		$this->form_validation->set_rules('password2', 'Confirma tu contraseña', 'trim|required|matches[password]');
@@ -140,6 +141,7 @@ class Login extends CI_Controller{
 			'nombre' => $this->input->post('nombre'),
 			'apellido' => $this->input->post('apellido'),
 			'sexo' => $this->input->post('sexo'),
+			'puesto' => $this->input->post('puesto'),
 			'email' => $this->input->post('email'),
 			'password' => md5($this->input->post('password')),
 			'avatar' => $avatar

@@ -1,5 +1,5 @@
 <?php
-echo form_open('administracion/insert_usuario/'.$usuarios->id_organizacion.'');
+echo form_open('administracion/insert_usuario');
 echo form_fieldset('Registro de nuevo usuario');
 ?>
 

@@ -3,16 +3,14 @@ En esta sección podrás ver la información de los <strong>participantes</stron
 <a href="#" data-dismiss="alert" class="close">×</a>
 </div>
 
-<!-- <div class="row-fluid" style="border: 1px solid black; height: 30px;">
+<div class="row-fluid" style="height: 70px;">
 	<div class="span12">
-		<div class="btn-group">
 			<?php echo anchor('administracion/insert_usuario/'.$id_organizacion.'', '<i class="icon-user"></i> Agregar', 'class="btn"'); ?>
-			<?php echo anchor('#', '<i class="icon-list-alt"</i>', 'class="btn"'); ?>
 			<?php echo anchor('administracion/profile_organizacion', '<i class="icon-th"></i> Organigrama', 'class="btn"'); ?>
+			<?php echo anchor('administracion/profile_organizacion', '<i class="icon-list-alt"></i> Organización', 'class="btn"'); ?>
 			<?php echo anchor('sitio', '<i class="icon-home"></i> Regresar', 'class="btn"'); ?>
-		</div>
 	</div>
-</div> -->
+</div>
 
 <?php foreach($usuarios as $usuario): ?>
 	<div class="row-fluid" style="height: 250px;">

@@ -22,7 +22,7 @@ echo form_fieldset('Agregar ley');
 	); ?>
 <?php echo form_textarea($data); ?>
 
-<p>Ultima actualización <span style="color: gray;"><i>(aaaa-mm-dd)</i></span></p>
+<p>Ultima actualización</p>
 <?php echo form_input('ult_act', '', 'class="datepicker"'); ?>
 
 <p>Artículo</p>
@@ -47,3 +47,9 @@ echo form_submit('enviar', 'Agregar', 'class="btn btn-primary"');
 echo " ";
 echo anchor('legislaciones', 'Cancelar', 'class="btn btn-danger"');
 echo validation_errors('<p class="error">'); ?>
+
+<script>
+$(function() {
+$( ".datepicker" ).datepicker({ dateFormat: 'yy-mm-dd' });
+});
+</script>

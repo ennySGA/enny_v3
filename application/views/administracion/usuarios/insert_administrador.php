@@ -16,6 +16,9 @@ M <input type="radio" name="sexo" value="M" <?php echo set_radio('sexo', 'M', 'M
 <p>Correo electrónico</p>
 <?php echo form_input('email', ''); ?>
 
+<p>Puesto</p>
+<?php echo form_input('puesto', ''); ?>
+
 <p>Contraseña</p>
 <?php echo form_password('password', ''); ?>
 
